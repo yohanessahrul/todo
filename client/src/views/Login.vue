@@ -10,9 +10,10 @@
           <p>login</p>
           <fb:login-button 
               scope="public_profile,email"
-              onlogin="checkLoginState();">
+              onlogin="checkLoginState();"
+              @click="checkLoginState()">
           </fb:login-button>
-          <button @click="checkLoginState()" class="btn-facebok">Login Facebook</button>
+          <!-- <button @click="checkLoginState()" class="btn-facebok">Login Facebook</button> -->
       </div>
   </div>
 </template>
@@ -86,7 +87,7 @@ export default {
                     // console.log('token---->', token)
                     // localStorage.setItem('token', token)
                     // console.log('data from server----->', responseServer)
-                    let data = response.data.data
+                    let data = responseServer.data.data
                     console.log(data)
                     this.userProfile = data
                     localStorage.setItem('token', data.token)
