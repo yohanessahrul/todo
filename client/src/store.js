@@ -9,7 +9,9 @@ export default new Vuex.Store({
     isLogin: false,
     tasks: [],
     unCompleteTask: [],
-    completeTasks: []
+    completeTasks: [],
+    userProfile: '',
+    token: ''
   },
   mutations: {
     saveTaskMutation (state, payload) {
@@ -37,7 +39,21 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    loginManual ({commit}, payload) {
+      return new Promise((resolve, reject) => {
+        axios.post('https://todofancyyosa.herokuapp.com/api/user/signin', payload)
+          .then(response => {
+            let data = response.data
+            resolve(data)
+          })
+          .catch(err => {
+            console.log(err)
+            reject(err)
+          })
+      })
+    },
     saveTask ({commit}, payload) {
+      // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhZGVlZTJkOGUxMzU2NDUxMDJhNWE2MCIsInVzZXJuYW1lIjoieW9oYW5lcyIsImlhdCI6MTUyNjY1NDI1Mn0.2__68M5DEC0O3sK-0vvvccrx4wReiCR03cEZPgzj4ek
       let token = localStorage.getItem('token')
       axios.post(`https://todofancyyosa.herokuapp.com/api/task/createtask/${token}`, {
         name: payload.name,

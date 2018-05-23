@@ -5,6 +5,7 @@ import store from './store'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import VueAlertify from "vue-alertify"
+import '../public/fb-sdk'
  
 Vue.use(VueAlertify)
 Vue.use(Vuetify)

@@ -7,7 +7,7 @@
                 <div class="gambar">
                     <img src="" alt="">
                 </div>
-                <h1>Yohanes Sahrul</h1>
+                <h1> {{ name }} </h1>
             </div>
             <div class="content animated bounceInLeft">
                 <div class="buttongroup">
@@ -21,12 +21,33 @@
 
 <script>
 export default {
+  data () {
+    return {
+      name: '',
+      email: '',
+      picture: '',
+      id: ''
+    }
+  },
+  created () {
+    if (!localStorage.getItem('token')) {
+      this.$router.push('/')
+    }
+    this.name = localStorage.getItem('fullname')
+    this.email = localStorage.getItem('email')
+  },
   methods: {
     gotToABout () {
       this.$router.push('/about')
     },
     logout () {
-
+      localStorage.removeItem('token')
+      localStorage.removeItem('username')
+      localStorage.removeItem('fullname')
+      localStorage.removeItem('id')
+      localStorage.removeItem('email')
+      localStorage.removeItem('picture')
+      this.$router.push('/')
     }
   }
 }
@@ -53,6 +74,11 @@ export default {
   height: 150px;
   margin: 40px auto 20px auto;
   background: yellow;
+  overflow: hidden;
+}
+.gambar > img {
+  width: 100%;
+  height: 100%;
 }
 .buttongroup {
   width: 100%;

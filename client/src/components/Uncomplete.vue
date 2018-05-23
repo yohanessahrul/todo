@@ -41,8 +41,11 @@ export default {
         id: id,
         index: index
       }
-      this.$store.dispatch('checklistTask', payload)
-      this.$alertify.success('Task complete')
+      swal("Are you sure you want to do this?", {
+        buttons: ["Oh noez!", "Aww yiss!"],
+      }, 
+      this.$store.dispatch('checklistTask', payload))
+      // this.$alertify.success('Task complete')
     },
     hapusTask (id, index) {
       let payload = {

@@ -10,6 +10,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-runtime": "^6.26.0",
+    "facebook-login-vuejs": "^2.1.3",
+    "sweetalert": "^2.1.0",
     "vue": "^2.5.16",
     "vue-alertify": "^1.0.5",
     "vue-router": "^3.0.1",
