@@ -82,10 +82,23 @@ export default {
                   picture: profile.picture.data.url,
                 })
                   .then(responseServer => {
-                    let token = responseServer.data.token
-                    console.log('token---->', token)
-                    localStorage.setItem('token', token)
-                    console.log('data from server----->', responseServer)
+                    // let token = responseServer.data.token
+                    // console.log('token---->', token)
+                    // localStorage.setItem('token', token)
+                    // console.log('data from server----->', responseServer)
+                    let data = response.data.data
+                    console.log(data)
+                    this.userProfile = data
+                    localStorage.setItem('token', data.token)
+                    swal({
+                      title: 'Good job!',
+                      text: 'Welcome to the apllication, Mr ' + data.fullname,
+                      icon: 'success'
+                    })
+                    if (localStorage.getItem('token')) {
+                      this.$router.push('/profile')
+                    }
+
                   })
                   .catch(err => {
                     console.log(err)
